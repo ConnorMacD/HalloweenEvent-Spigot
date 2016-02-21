@@ -1,0 +1,19 @@
+name: HalloweenEvent
+main: net.klzed.HalloweenEvent.Main
+version: 0.1
+author: Klz
+description: A plugin to Halloween!
+commands:
+  halloweenchest:
+    description: Make a spooky secret chest!
+    usage: /halloweenchest <set/delete> <id[:dv]>
+  save-chests:
+    description: Testing saving functionality.
+    usage: /save-chests
+  load-chests:
+    descripton: Testing loading functionality.
+    usage: /load-chests
+  chest-debug:
+    descripton: get list values
+    usage: /chest-debug
+  
