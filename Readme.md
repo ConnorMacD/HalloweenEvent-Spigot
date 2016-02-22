@@ -19,7 +19,7 @@ HalloweenEvent-Spigot is a one-time item giving Spigot plugin. It was made quick
 ### Deleting a Halloween chest
 
 1. Have OP rights, or the permission 'halloweenevent.all'.
-2. Either break the chest, which will delete the chest's functionality, or use the '/halloweenchest delete' command.
+2. Use the '/halloweenchest delete' command.
 3. Punch the chest to remove the chest's functionality while keeping the chest intact.
 
 ## Dependencies
