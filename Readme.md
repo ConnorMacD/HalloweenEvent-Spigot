@@ -12,14 +12,14 @@ HalloweenEvent-Spigot is a one-time item giving Spigot plugin. It was made quick
 ### Creating a Halloween chest
 1. Have OP rights, or the permission 'halloweenevent.all'.
 2. Place down a chest, or a trapped chest.
-3. Use the command '/halloweenchest set <id>[:dv]' where id is the ID of the item, and dv is the optional data value.
+3. Use the command '/halloweenchest set {ID}[:dv]' where id is the ID of the item, and dv is the optional data value.
 4. Punch the placed chest. Whenever someone opens it, they'll be given an item with their name in the Lore tags.
 5. After claiming your item, you are not allowed to open it again while it's been set as a Halloween chest.
 
 ### Deleting a Halloween chest
 
 1. Have OP rights, or the permission 'halloweenevent.all'.
-2. Either break the chest, which will delete the chest's functionality, or use the '/halloweenchest delete' command.
+2. Use the '/halloweenchest delete' command.
 3. Punch the chest to remove the chest's functionality while keeping the chest intact.
 
 ## Dependencies
