@@ -1,7 +1,6 @@
 package net.klzed.HalloweenEvent;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.logging.Level;
@@ -265,23 +264,23 @@ public class Main extends JavaPlugin implements Listener {
 		return folder;
 	}
 	
-//	@EventHandler
-//	public void onBlockBreak(BlockBreakEvent event) {
-//		if (event.getPlayer() instanceof Player) {
-//			if (event.getBlock().getType() == Material.CHEST || event.getBlock().getType() == Material.TRAPPED_CHEST && halloweenChests.containsKey(event.getBlock().getLocation())) {
-////				if (!event.getPlayer().hasPermission("halloweenevent.all")) {
-////					event.setCancelled(true);
-////					event.getPlayer().sendMessage(ChatColor.RED + "You do not have permission to destroy this chest.");
-////					return;
-////				}
-//				Block b = event.getBlock();
-//				halloweenChests.remove(b.getLocation());
-//				openedChests.remove(b.getLocation());
-//				event.getPlayer().sendMessage("The item chest was destroyed. Removed item spawning from location.");
-//				return;
-//			}
-//		}
-//	}
+	@EventHandler
+	public void onBlockBreak(BlockBreakEvent event) {
+		if (event.getPlayer() instanceof Player) {
+			if ((event.getBlock().getType() == Material.CHEST || event.getBlock().getType() == Material.TRAPPED_CHEST) && halloweenChests.containsKey(event.getBlock().getLocation())) {
+				if (!event.getPlayer().hasPermission("halloweenevent.all")) {
+					event.setCancelled(true);
+					event.getPlayer().sendMessage(ChatColor.RED + "You do not have permission to destroy this chest.");
+					return;
+				}
+				Block b = event.getBlock();
+				halloweenChests.remove(b.getLocation());
+				openedChests.remove(b.getLocation());
+				event.getPlayer().sendMessage("The item chest was destroyed. Removed item spawning from location.");
+				return;
+			}
+		}
+	}
 	
 	public FileConfiguration getChestConfig(Location l) {
 		String fileName = "x"+l.getBlockX()+"y"+l.getBlockY()+"z"+l.getBlockZ()+".yml";
@@ -461,13 +460,14 @@ public class Main extends JavaPlugin implements Listener {
 					Chest c = (Chest) b.getState();
 					//Bukkit.broadcastMessage("Saved chest found at: " + chestLocation.getBlockX() + "/"+ chestLocation.getBlockY() + "/"+ chestLocation.getBlockZ());
 					Inventory i = c.getBlockInventory();
-					int id,dv;
+					int id;
+					short dv;
 					id = Integer.parseInt(item.get(0));
 					dv = 0;
-					if (item.size() > 2) {
-						dv = Integer.parseInt(item.get(1));
+					if (item.size() > 1) {
+						dv = Short.parseShort(item.get(1));
 					}
-					ItemStack is = new ItemStack(id, 1, (short) dv);
+					ItemStack is = new ItemStack(id, 1, dv);
 					ItemMeta im = is.getItemMeta();
 					im.setLore(asList("Found by: "+ p.getName()));
 					if (item.size() == 3) {
